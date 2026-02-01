@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Valentine’s Day Kanna ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Romantic Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Dancing+Script:wght@500;600;700&display=swap" rel="stylesheet">
+
+<!-- Clean font for Gift 2A only -->
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+/* RESET */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+/* GLOBAL */
+body{
+  height:100vh;
+  background:linear-gradient(135deg,#ff6a88,#ff99ac);
+  color:white;
+  overflow:hidden;
+}
+
+section{
+  position:absolute;
+  width:100%;
+  height:100%;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  text-align:center;
+  padding:20px;
+}
+
+section.active{
+  display:flex;
+  animation:fade 1s ease;
+}
+
+@keyframes fade{
+  from{opacity:0;transform:scale(0.95)}
+  to{opacity:1;transform:scale(1)}
+}
+
+/* FONTS */
+h1, h2{
+  font-family:"Playfair Display", serif;
+  letter-spacing:1px;
+}
+
+p{
+  font-family:"Playfair Display", serif;
+}
+
+.romantic{
+  font-family:"Dancing Script", cursive;
+  font-size:1.7rem;
+}
+
+/* Gift 2A text */
+.gift2a-text{
+  font-family:"Libre Baskerville", serif;
+  font-size:1.15rem;
+  line-height:1.9;
+}
+
+/* ✅ ADD THIS: scrolling only for Gift 2A */
+.scroll-box{
+  max-height:65vh;
+  overflow-y:auto;
+  padding-right:10px;
+}
+
+/* BUTTON */
+button{
+  margin-top:30px;
+  padding:14px 34px;
+  border:none;
+  border-radius:30px;
+  background:white;
+  color:#ff4f81;
+  font-size:18px;
+  font-weight:600;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+button:hover{
+  transform:scale(1.08);
+  box-shadow:0 10px 25px rgba(0,0,0,0.3);
+}
+
+/* HEARTS */
+.heart{
+  position:absolute;
+  bottom:-40px;
+  font-size:22px;
+  animation:floatUp linear infinite;
+}
+
+@keyframes floatUp{
+  from{transform:translateY(0);opacity:1}
+  to{transform:translateY(-120vh);opacity:0}
+}
+
+/* GIFT GRID */
+.gifts{
+  display:flex;
+  gap:25px;
+  flex-wrap:wrap;
+  margin-top:40px;
+}
+
+.gift{
+  width:240px;
+  height:260px;
+  background:rgba(255,255,255,0.22);
+  border-radius:20px;
+  backdrop-filter:blur(10px);
+  padding:20px;
+  cursor:pointer;
+  transition:0.4s;
+}
+
+.gift:hover{
+  transform:scale(1.1);
+  background:rgba(255,255,255,0.35);
+}
+
+.gift h2{
+  margin-top:90px;
+}
+
+/* SUB GIFTS */
+.subgifts{
+  display:flex;
+  gap:25px;
+  flex-wrap:wrap;
+  margin-top:30px;
+}
+
+.subgift{
+  width:250px;
+  height:200px;
+  background:rgba(255,255,255,0.25);
+  border-radius:18px;
+  padding:20px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.subgift:hover{
+  transform:scale(1.08);
+  background:rgba(255,255,255,0.4);
+}
+
+/* CONTENT BOX */
+.box{
+  max-width:800px;
+  background:rgba(255,255,255,0.25);
+  padding:30px;
+  border-radius:20px;
+  backdrop-filter:blur(10px);
+}
+
+/* AUTO SCROLL PHOTOS */
+.photos{
+  width:100%;
+  overflow:hidden;
+  margin-top:20px;
+}
+
+.photo-track{
+  display:flex;
+  gap:15px;
+  width:max-content;
+  animation:scrollPhotos 22s linear infinite;
+}
+
+@keyframes scrollPhotos{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
+
+.photos img{
+  width:200px;
+  height:260px;
+  object-fit:cover;
+  border-radius:15px;
+  flex-shrink:0;
+  transition:0.3s;
+}
+
+.photos img:hover{
+  transform:scale(1.07);
+}
+
+/* SOFT LOVE LINE */
+.soft-love{
+  margin-top:14px;
+  font-family:"Dancing Script", cursive;
+  font-size:1.6rem;
+  animation:pulse 3s ease-in-out infinite;
+}
+
+@keyframes pulse{
+  0%{opacity:0.7;}
+  50%{opacity:1;}
+  100%{opacity:0.7;}
+}
+/* Gift 3 buttons */
+.valentine-box{
+  position:relative;
+  width:360px;
+  height:140px;
+  margin-top:30px;
+}
+
+.val-btn{
+  position:absolute;
+  width:120px;
+  height:50px;
+  border-radius:30px;
+  font-size:18px;
+  font-weight:600;
+  cursor:pointer;
+}
+
+.yes-btn{
+  left:30px;
+  top:50px;
+}
+
+.no-btn{
+  right:30px;
+  top:50px;
+}
+
+/* YES success page */
+.yes-bg{
+  height:100vh;
+  width:100%;
+  background:radial-gradient(circle at top,#ff9bb3,#ff4f81);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  text-align:center;
+  animation:fade 1s ease;
+}
+
+/* Cute sparkle effect on YES */
+.sparkle{
+  position:fixed;
+  font-size:18px;
+  pointer-events:none;
+  animation:spark 1.1s ease-out forwards;
+}
+
+@keyframes spark{
+  0%{
+    transform:scale(0.6) translateY(0);
+    opacity:1;
+  }
+  100%{
+    transform:scale(1.6) translateY(-140px);
+    opacity:0;
+  }
+}
+
+
+
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+<section id="page1" class="active">
+  <h1>Happy Valentine’s Day, Kanna ❤️</h1>
+  <p class="romantic">
+    Every heartbeat, every smile, every dream I hold… They all find their way back to you, Kanna.<br>
+    In this life and every one after, I am forever yours — Your baby 💞<br>
+  </p>
+  <button onclick="go('page2')">Next ➜</button>
+</section>
+
+
+<!-- PAGE 2 -->
+<section id="page2">
+  <h1>Choose Your Gift 🎁</h1>
+
+  <div class="gifts">
+    <div class="gift" onclick="go('gift1')"><h2>Our Beautiful Memories 📸</h2></div>
+    <div class="gift" onclick="go('gift2')"><h2>From My Heart 💖</h2></div>
+    <div class="gift" onclick="go('gift3')"><h2>Just For You ✨</h2></div>
+  </div>
+
+  <button onclick="go('page1')">⬅ Back</button>
+</section>
+
+<!-- GIFT 1 -->
+<section id="gift1">
+  <div class="box">
+
+    <h1>Memories I Hold Close 💖</h1>
+
+    <div class="photos">
+      <div class="photo-track">
+
+<img src="images/img1.jpg.jpg">
+<img src="images/img2.jpg.jpg">
+<img src="images/img3.jpg.jpeg">
+<img src="images/img4.jpg.jpeg">
+<img src="images/img5.jpg.jpeg">
+<img src="images/img6.jpg.jpeg">
+<img src="images/img7.jpg.jpeg">
+<img src="images/img8.jpg.jpg">
+<img src="images/img9.jpg.jpeg">
+
+
+        <!-- duplicate for smooth loop -->
+<img src="images/img1.jpg.jpg">
+<img src="images/img2.jpg.jpg">
+<img src="images/img3.jpg.jpeg">
+<img src="images/img4.jpg.jpeg">
+<img src="images/img5.jpg.jpeg">
+<img src="images/img6.jpg.jpeg">
+<img src="images/img7.jpg.jpeg">
+<img src="images/img8.jpg.jpg">
+<img src="images/img9.jpg.jpeg">
+
+
+      </div>
+    </div>
+
+    <div class="soft-love">
+      Every picture holds a piece of my heart ❤️
+    </div>
+
+    <button onclick="go('page2')">⬅ Back</button>
+
+  </div>
+</section>
+
+<!-- GIFT 2 -->
+<section id="gift2">
+  <h1>Choose One 💕</h1>
+  <div class="subgifts">
+    <div class="subgift" onclick="go('gift2a')"><h2>Why You Are Special 💖</h2></div>
+    <div class="subgift" onclick="go('gift2b')"><h2>My Promise To You 🤍</h2></div>
+  </div>
+  <button onclick="go('page2')">⬅ Back</button>
+</section>
+
+<!-- GIFT 2A -->
+<section id="gift2a">
+  <div class="box scroll-box">
+    <h1>Why You Are Special 💖</h1>
+    <p class="gift2a-text">
+      • Even when I make mistakes, you may get upset with me — but you never walk away from me. <br><br>
+      • One smile from you is enough to make me forget everything and feel happy again. <br><br>
+      • You always keep talking about something or the other, and I never get tired of listening to you. Your words feel like home to me. <br><br>
+      • You get emotional over the smallest things, and that’s how I understand how deeply you love me. <br><br>
+      • Every single moment, you think about me, wish for my good, and want only the best for me — always. <br><br>
+      ❤️ Kanna, life feels best with you.
+    </p>
+    <button onclick="go('gift2')">⬅ Back</button>
+  </div>
+</section>
+
+<!-- GIFT 2B -->
+<section id="gift2b">
+  <div class="box">
+    <h1>My Promise To You 🤍</h1>
+    <p class="romantic">
+      I may not be perfect,  
+      but I promise effort, honesty,  
+      and choosing you every single day.  
+      <br><br>
+      Always yours, Hruthik 💞
+    </p>
+    <button onclick="go('gift2')">⬅ Back</button>
+  </div>
+</section>
+
+<!-- GIFT 3 -->
+<section id="gift3">
+  <div class="box">
+    <h1>Will You Be My Valentine? 💘</h1>
+
+    <div class="valentine-box" id="valBox">
+      <button id="yesBtn" class="val-btn yes-btn">Yes 💖</button>
+      <button id="noBtn" class="val-btn no-btn">No 😏</button>
+    </div>
+  </div>
+</section>
+
+<!-- AFTER YES PAGE -->
+<section id="yesPage">
+  <div class="yes-bg">
+    <h1>Hehe 😌💖</h1>
+    <p class="romantic">
+      I knew it… there was never a “No” option anyway 😏<br><br>
+      Looks like you’re lucky —<br>
+      because my heart already chose you 💞
+    </p>
+  </div>
+</section>
+
+<audio id="yesSound" preload="auto">
+  <source src="https://assets.mixkit.co/sfx/preview/mixkit-positive-interface-beep-221.mp3" type="audio/mpeg">
+</audio>
+
+
+
+<script>
+/* ---------- PAGE NAVIGATION ---------- */
+function go(id){
+  document.querySelectorAll("section").forEach(s => s.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+}
+
+/* ---------- FLOATING HEARTS BACKGROUND ---------- */
+for(let i = 0; i < 25; i++){
+  const h = document.createElement("div");
+  h.className = "heart";
+  h.innerHTML = "❤️";
+  h.style.left = Math.random() * 100 + "vw";
+  h.style.animationDuration = (5 + Math.random() * 5) + "s";
+  document.body.appendChild(h);
+}
+
+/* ---------- GIFT 3 : YES / NO LOGIC ---------- */
+const box = document.getElementById("valBox");
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+const yesSound = document.getElementById("yesSound");
+
+/* NO button escapes cursor (mouse + mobile touch) */
+function evade(x, y){
+  const rect = noBtn.getBoundingClientRect();
+  const dx = (rect.left + rect.width / 2) - x;
+  const dy = (rect.top + rect.height / 2) - y;
+  const distance = Math.sqrt(dx*dx + dy*dy);
+
+  if(distance < 90){
+    const maxX = box.clientWidth - noBtn.offsetWidth;
+    const maxY = box.clientHeight - noBtn.offsetHeight;
+
+    noBtn.style.left = Math.random() * maxX + "px";
+    noBtn.style.top  = Math.random() * maxY + "px";
+  }
+}
+
+/* Desktop */
+box.addEventListener("mousemove", e => {
+  evade(e.clientX, e.clientY);
+});
+
+/* Mobile */
+box.addEventListener("touchmove", e => {
+  const t = e.touches[0];
+  evade(t.clientX, t.clientY);
+});
+
+/* ✨ Cute sparkle explosion */
+function sparkleBurst(){
+  const icons = ["✨","💖","💫","🌸","💕"];
+  for(let i = 0; i < 22; i++){
+    const s = document.createElement("div");
+    s.className = "sparkle";
+    s.innerHTML = icons[Math.floor(Math.random() * icons.length)];
+    s.style.left = (50 + Math.random() * 20 - 10) + "vw";
+    s.style.top  = "65vh";
+    document.body.appendChild(s);
+    setTimeout(() => s.remove(), 1100);
+  }
+}
+
+yesBtn.addEventListener("click", () => {
+
+  yesSound.currentTime = 0;
+  yesSound.muted = false;
+
+  const playPromise = yesSound.play();
+  if (playPromise !== undefined) {
+    playPromise.catch(err => {
+      console.log("Audio blocked:", err);
+    });
+  }
+
+  sparkleBurst();
+  go('yesPage');
+
+  setTimeout(() => {
+    go('page2');
+  }, 2500);
+});
+
+</script>
+
+
+
+</body>
+</html>
