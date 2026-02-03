@@ -117,49 +117,111 @@ button:hover{
   flex-wrap:wrap;
   margin-top:40px;
 }
-
+/* ===== GIFT BOX WITH VIDEO BACKGROUND ===== */
 .gift{
-  width:240px;
-  height:260px;
-  background:rgba(255,255,255,0.22);
-  border-radius:20px;
-  backdrop-filter:blur(10px);
-  padding:20px;
+  width:260px;
+  height:380px;              /* ✅ taller for vertical videos */
+  border-radius:24px;
+  position:relative;
+  overflow:hidden;           /* keeps video inside */
   cursor:pointer;
-  transition:0.4s;
+  box-shadow:0 16px 40px rgba(0,0,0,0.3);
+  transition:0.35s;
 }
 
-.gift:hover{
-  transform:scale(1.1);
-  background:rgba(255,255,255,0.35);
+
+/* VIDEO INSIDE GIFT BOX */
+.gift video{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;          /* 🔑 fits perfectly */
+  z-index:0;
 }
 
+/* DARK OVERLAY FOR TEXT READABILITY */
+.gift::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.35);
+  z-index:1;
+}
+
+/* TEXT ON TOP OF VIDEO */
 .gift h2{
-  margin-top:90px;
+  position:relative;
+  z-index:2;
+  color:white;
+  margin-top:95px;
+  padding:0 10px;
+}
+
+/* HOVER EFFECT */
+.gift:hover{
+  transform:scale(1.08);
 }
 
 /* SUB GIFTS */
+/* ===== SUB GIFT WITH VIDEO BACKGROUND ===== */
+
+/* SUB GIFTS CONTAINER (REQUIRED) */
 .subgifts{
   display:flex;
   gap:25px;
   flex-wrap:wrap;
   margin-top:30px;
+  justify-content:center;
 }
+
 
 .subgift{
-  width:250px;
-  height:200px;
-  background:rgba(255,255,255,0.25);
-  border-radius:18px;
-  padding:20px;
+  width:260px;
+  height:340px;              /* ✅ taller for vertical videos */
+  border-radius:22px;
+  position:relative;
+  overflow:hidden;
   cursor:pointer;
-  transition:0.3s;
+  box-shadow:0 14px 35px rgba(0,0,0,0.28);
+  transition:0.35s;
 }
 
+
+/* VIDEO INSIDE SUB GIFT */
+.subgift video{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:0;
+}
+
+/* DARK OVERLAY FOR TEXT */
+.subgift::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.35);
+  z-index:1;
+}
+
+/* TEXT ON TOP */
+.subgift h2{
+  position:relative;
+  z-index:2;
+  color:white;
+  padding:0 12px;
+  margin-top:70px;
+}
+
+/* HOVER EFFECT */
 .subgift:hover{
   transform:scale(1.08);
-  background:rgba(255,255,255,0.4);
 }
+
 
 /* CONTENT BOX */
 .box{
@@ -216,22 +278,31 @@ button:hover{
   100%{opacity:0.7;}
 }
 /* Gift 3 buttons */
+/* ===== GIFT 3 BUTTON LAYOUT (CLEAN & EQUAL) ===== */
 .valentine-box{
-  position:relative;
-  width:360px;
-  height:140px;
-  margin-top:30px;
+  display:flex;
+  justify-content:center;   /* CENTER buttons horizontally */
+  gap:24px;
+  width:100%;
+  max-width:360px;
+  margin:30px auto 0;       /* AUTO = center the whole block */
 }
 
+
 .val-btn{
-  position:absolute;
-  width:120px;
-  height:50px;
+  flex:1;
+  height:52px;
   border-radius:30px;
-  font-size:18px;
-  font-weight:600;
+  font-size:16px;
+  font-weight:700;
   cursor:pointer;
+  background:white;
+  color:#ff4f81;
+  border:none;
+  transition:0.25s;
 }
+
+
 
 .yes-btn{
   left:30px;
@@ -275,6 +346,216 @@ button:hover{
   }
 }
 
+/* ===== INTRO LOVE CARD ===== */
+.intro-card{
+  background:rgba(255,255,255,0.22);
+  backdrop-filter:blur(14px);
+  border-radius:26px;
+  padding:40px 30px;
+  max-width:720px;
+  width:90%;
+  animation:popIn 1.2s ease;
+}
+
+@keyframes popIn{
+  from{opacity:0; transform:scale(0.9)}
+  to{opacity:1; transform:scale(1)}
+}
+
+/* Typing text */
+#typeLine1{
+  min-height:48px;
+}
+
+#typeLine2{
+  min-height:120px;
+  margin-top:16px;
+}
+
+/* Soft glowing heart */
+.glow-heart{
+  font-size:40px;
+  margin:22px 0;
+  animation:heartbeat 2s infinite;
+}
+
+@keyframes heartbeat{
+  0%,100%{transform:scale(1); opacity:0.8}
+  50%{transform:scale(1.25); opacity:1}
+}
+
+/* Soft heartbeat glow for name */
+.heartbeat {
+  animation: heartbeat 2.2s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+  0%   { transform: scale(1); text-shadow: 0 0 0 rgba(255,255,255,0); }
+  25%  { transform: scale(1.05); text-shadow: 0 0 18px rgba(255,255,255,0.6); }
+  50%  { transform: scale(1); }
+  75%  { transform: scale(1.04); text-shadow: 0 0 12px rgba(255,255,255,0.4); }
+  100% { transform: scale(1); }
+}
+
+/* ===== GIFT 3 CARD ENHANCEMENT ===== */
+.valentine-card{
+  position:relative;
+  padding:40px 30px;
+}
+
+.val-title{
+  font-size:2.2rem;
+  margin-bottom:10px;
+}
+
+.val-sub{
+  font-size:1.1rem;
+  opacity:0.85;
+  margin-bottom:25px;
+}
+
+/* glowing ring emoji */
+.ring-glow{
+  font-size:3rem;
+  margin-bottom:15px;
+  animation:pulseGlow 2.2s infinite;
+}
+
+@keyframes pulseGlow{
+  0%{transform:scale(1); opacity:0.8}
+  50%{transform:scale(1.2); opacity:1}
+  100%{transform:scale(1); opacity:0.8}
+}
+
+.hint-text{
+  margin-top:18px;
+  font-size:0.95rem;
+  opacity:0.7;
+}
+
+/* ===== COUPLE PHOTO ON YES PAGE ===== */
+.love-photo{
+  width:220px;
+  height:220px;
+  border-radius:50%;
+  overflow:hidden;
+  margin-bottom:20px;
+  border:6px solid rgba(255,255,255,0.6);
+  box-shadow:
+    0 0 30px rgba(255,255,255,0.6),
+    0 15px 40px rgba(0,0,0,0.4);
+  animation:softPulse 4s infinite;
+}
+
+.love-photo img{
+  width:110%;
+  height:140%;
+  object-fit:cover;
+  object-position:center;
+  transform:translate(-5%, -5%);
+}
+
+/* Soft romantic glow */
+@keyframes softPulse{
+  0%{transform:scale(1); box-shadow:0 0 25px rgba(255,255,255,0.5);}
+  50%{transform:scale(1.05); box-shadow:0 0 40px rgba(255,255,255,0.8);}
+  100%{transform:scale(1);}
+}
+
+
+/* Romantic dark background for memory & heart pages */
+#page1,
+#gift1,
+#gift2a,
+#gift2b,
+#gift3{
+  background: linear-gradient(135deg, #3a0d23, #7b113a);
+}
+
+/* ================= MOBILE RESPONSIVE FIX ================= */
+@media (max-width: 768px){
+
+  body{
+    overflow-x:hidden;
+  }
+
+  /* Sections padding */
+  section{
+    padding:16px;
+  }
+
+  /* Headings */
+  h1{
+    font-size:1.6rem;
+  }
+
+  h2{
+    font-size:1.1rem;
+  }
+
+  .romantic{
+    font-size:1.3rem;
+  }
+
+  /* Main box */
+  .box{
+    max-width:100%;
+    padding:20px;
+  }
+
+  /* Gift cards (page 2) */
+  .gifts{
+    flex-direction:column;
+    align-items:center;
+  }
+
+  .gift{
+    width:90%;
+    height:220px;
+  }
+
+  /* Sub gifts */
+  .subgifts{
+    flex-direction:column;
+    align-items:center;
+  }
+
+  .subgift{
+    width:90%;
+    height:220px;
+  }
+
+  /* Videos always fit */
+  .gift video,
+  .subgift video{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+
+  /* Buttons */
+  button{
+    width:90%;
+    font-size:16px;
+  }
+
+  /* Valentine YES/NO */
+  .valentine-box{
+    width:100%;
+    flex-direction:column;
+    gap:14px;
+  }
+
+  .val-btn{
+    width:100%;
+  }
+
+  /* Images slider */
+  .photos img{
+    width:160px;
+    height:210px;
+  }
+}
 
 
 </style>
@@ -284,24 +565,48 @@ button:hover{
 
 <!-- PAGE 1 -->
 <section id="page1" class="active">
-  <h1>Happy Valentine’s Day, Kanna ❤️</h1>
-  <p class="romantic">
-    Every heartbeat, every smile, every dream I hold… They all find their way back to you, Kanna.<br>
-    In this life and every one after, I am forever yours — Your baby 💞<br>
-  </p>
-  <button onclick="go('page2')">Next ➜</button>
+  <div class="intro-card">
+    <h1 id="typeLine1" class="heartbeat"></h1>
+
+    <p class="romantic" id="typeLine2"></p>
+
+    <div class="glow-heart">❤️</div>
+
+    <button onclick="go('page2')">Next ➜</button>
+  </div>
 </section>
+
 
 
 <!-- PAGE 2 -->
 <section id="page2">
-  <h1>Choose Your Gift 🎁</h1>
+  <h1>Unwrap Something Made Just for You 💝</h1>
 
   <div class="gifts">
-    <div class="gift" onclick="go('gift1')"><h2>Our Beautiful Memories 📸</h2></div>
-    <div class="gift" onclick="go('gift2')"><h2>From My Heart 💖</h2></div>
-    <div class="gift" onclick="go('gift3')"><h2>Just For You ✨</h2></div>
+
+  <div class="gift" onclick="go('gift1')">
+    <video autoplay muted loop playsinline>
+      <source src="videos/gift1.mp4" type="video/mp4">
+    </video>
+    <h2>Our Beautiful Memories 📸</h2>
   </div>
+
+  <div class="gift" onclick="go('gift2')">
+    <video autoplay muted loop playsinline>
+      <source src="videos/gift2.mp4" type="video/mp4">
+    </video>
+    <h2>From My Heart 💖</h2>
+  </div>
+
+  <div class="gift" onclick="go('gift3')">
+    <video autoplay muted loop playsinline>
+      <source src="videos/gift3.mp4" type="video/mp4">
+    </video>
+    <h2>Just For You ✨</h2>
+  </div>
+
+</div>
+
 
   <button onclick="go('page1')">⬅ Back</button>
 </section>
@@ -352,10 +657,22 @@ button:hover{
 
 <!-- GIFT 2 -->
 <section id="gift2">
-  <h1>Choose One 💕</h1>
+  <h1>From My Heart, Just for You 💕</h1>
   <div class="subgifts">
-    <div class="subgift" onclick="go('gift2a')"><h2>Why You Are Special 💖</h2></div>
-    <div class="subgift" onclick="go('gift2b')"><h2>My Promise To You 🤍</h2></div>
+    <div class="subgift" onclick="go('gift2a')">
+  <video autoplay muted loop playsinline>
+    <source src="videos/special1.MP4" type="video/mp4">
+  </video>
+  <h2>Why You Are Special 💖</h2>
+</div>
+
+    <div class="subgift" onclick="go('gift2b')">
+  <video autoplay muted loop playsinline>
+    <source src="videos/special2.mp4" type="video/mp4">
+  </video>
+  <h2>My Promise To You 🤍</h2>
+</div>
+
   </div>
   <button onclick="go('page2')">⬅ Back</button>
 </section>
@@ -380,55 +697,104 @@ button:hover{
 <section id="gift2b">
   <div class="box">
     <h1>My Promise To You 🤍</h1>
-    <p class="romantic">
-      I may not be perfect,  
-      but I promise effort, honesty,  
-      and choosing you every single day.  
-      <br><br>
-      Always yours, Hruthik 💞
-    </p>
-    <button onclick="go('gift2')">⬅ Back</button>
+
+<p class="romantic">
+I may not say it every time,<br>
+but my heart chooses you — always.<br><br>
+
+I promise to stand with you on good days<br>
+and hold you closer on the hard ones.<br><br>
+
+No matter how life changes,<br>
+no matter where we go,<br>
+you will never face anything alone.<br><br>
+
+This is my promise to you, kanna🤍
+</p>
+
+<button onclick="go('gift2')">⬅ Back</button>
+
   </div>
 </section>
 
+
 <!-- GIFT 3 -->
 <section id="gift3">
-  <div class="box">
-    <h1>Will You Be My Valentine? 💘</h1>
+  <div class="box valentine-card">
+
+    <div class="ring-glow">💍</div>
+
+    <h1 class="val-title">
+      Kanna,<br>
+      will you be my Valentine?💘
+    </h1>
+
+    <p class="val-sub">
+      No pressure…<br>
+      just my heart waiting for your answer 🤍
+    </p>
 
     <div class="valentine-box" id="valBox">
       <button id="yesBtn" class="val-btn yes-btn">Yes 💖</button>
       <button id="noBtn" class="val-btn no-btn">No 😏</button>
     </div>
+
+    <p class="hint-text">Choose wisely 😌</p>
+
   </div>
 </section>
+
 
 <!-- AFTER YES PAGE -->
 <section id="yesPage">
   <div class="yes-bg">
-    <h1>Hehe 😌💖</h1>
+
+    <!-- OUR PHOTO -->
+    <div class="love-photo">
+      <img src="images/us.jpg.jpeg" alt="Us together">
+    </div>
+
+    <!-- SAME TEXT (UNCHANGED) -->
+    <h1>OH YESSS 😍💖</h1>
+
     <p class="romantic">
-      I knew it… there was never a “No” option anyway 😏<br><br>
-      Looks like you’re lucky —<br>
-      because my heart already chose you 💞
+      Congratulations Babyyyyy🎉<br><br>
+      You just unlocked a lifetime subscription of<br>
+      love, care, annoying messages, and unlimited hugs 🤭💞<br><br>
+      Thank you for being my Valentine 🥹❤️<br>
+      (You really didn’t have a choice though 😌)
     </p>
+
+    <button onclick="go('page2')" style="margin-top:26px;">
+      ⬅ Back to Gifts
+    </button>
+
   </div>
 </section>
+
+
 
 <audio id="yesSound" preload="auto">
   <source src="https://assets.mixkit.co/sfx/preview/mixkit-positive-interface-beep-221.mp3" type="audio/mpeg">
 </audio>
 
-
-
 <script>
 /* ---------- PAGE NAVIGATION ---------- */
 function go(id){
   document.querySelectorAll("section").forEach(s => s.classList.remove("active"));
-  document.getElementById(id).classList.add("active");
+  const target = document.getElementById(id);
+  target.classList.add("active");
+
+  /* ▶️ FORCE PLAY VIDEOS WHEN SECTION OPENS */
+  const videos = target.querySelectorAll("video");
+  videos.forEach(v => {
+    v.currentTime = 0;
+    v.play().catch(()=>{});
+  });
 }
 
-/* ---------- FLOATING HEARTS BACKGROUND ---------- */
+
+/* ---------- FLOATING HEARTS ---------- */
 for(let i = 0; i < 25; i++){
   const h = document.createElement("div");
   h.className = "heart";
@@ -438,76 +804,93 @@ for(let i = 0; i < 25; i++){
   document.body.appendChild(h);
 }
 
-/* ---------- GIFT 3 : YES / NO LOGIC ---------- */
-const box = document.getElementById("valBox");
-const noBtn = document.getElementById("noBtn");
-const yesBtn = document.getElementById("yesBtn");
+/* ---------- GIFT 3 LOGIC ---------- */
+const yesBtn   = document.getElementById("yesBtn");
+const noBtn    = document.getElementById("noBtn");
 const yesSound = document.getElementById("yesSound");
 
-/* NO button escapes cursor (mouse + mobile touch) */
-function evade(x, y){
-  const rect = noBtn.getBoundingClientRect();
-  const dx = (rect.left + rect.width / 2) - x;
-  const dy = (rect.top + rect.height / 2) - y;
-  const distance = Math.sqrt(dx*dx + dy*dy);
+/* NO button text flow (NO movement) */
+const noTexts = [
+  "No 😏",
+  "Try again 😌",
+  "Are you sure? 🤨",
+  "Yes, you have no choice 😈"
+];
 
-  if(distance < 90){
-    const maxX = box.clientWidth - noBtn.offsetWidth;
-    const maxY = box.clientHeight - noBtn.offsetHeight;
+let noIndex = 0;
 
-    noBtn.style.left = Math.random() * maxX + "px";
-    noBtn.style.top  = Math.random() * maxY + "px";
+noBtn.addEventListener("click", () => {
+  noIndex++;
+
+  if (noIndex < noTexts.length) {
+    noBtn.textContent = noTexts[noIndex];
+  } else {
+    handleYes(); // FINAL → same as YES
   }
-}
-
-/* Desktop */
-box.addEventListener("mousemove", e => {
-  evade(e.clientX, e.clientY);
 });
 
-/* Mobile */
-box.addEventListener("touchmove", e => {
-  const t = e.touches[0];
-  evade(t.clientX, t.clientY);
-});
-
-/* ✨ Cute sparkle explosion */
-function sparkleBurst(){
-  const icons = ["✨","💖","💫","🌸","💕"];
-  for(let i = 0; i < 22; i++){
-    const s = document.createElement("div");
-    s.className = "sparkle";
-    s.innerHTML = icons[Math.floor(Math.random() * icons.length)];
-    s.style.left = (50 + Math.random() * 20 - 10) + "vw";
-    s.style.top  = "65vh";
-    document.body.appendChild(s);
-    setTimeout(() => s.remove(), 1100);
-  }
-}
-
-yesBtn.addEventListener("click", () => {
-
+/* YES logic (single source) */
+function handleYes(){
   yesSound.currentTime = 0;
   yesSound.muted = false;
 
-  const playPromise = yesSound.play();
-  if (playPromise !== undefined) {
-    playPromise.catch(err => {
-      console.log("Audio blocked:", err);
-    });
+  const p = yesSound.play();
+  if (p) p.catch(()=>{});
+
+  go("yesPage");
+}
+
+
+yesBtn.addEventListener("click", handleYes);
+/* ===== TYPEWRITER EFFECT (PAGE 1 ONLY) ===== */
+
+const line1Text = "Happy Valentine’s Day, Kanna ❤️";
+
+const line2Text =
+  "Some feelings don’t need reasons,\n" +
+  "Some people don’t need explanations.\n\n" +
+  "You’re just there —\n" +
+  "In every thought, every moment,\n" +
+  "without even trying.";
+
+let i = 0, j = 0;
+
+function typeLine1(){
+  if (i < line1Text.length) {
+    document.getElementById("typeLine1").textContent += line1Text.charAt(i);
+    i++;
+    setTimeout(typeLine1, 70);
+  } else {
+    setTimeout(typeLine2, 600);
   }
+}
 
-  sparkleBurst();
-  go('yesPage');
+function typeLine2(){
+  if (j < line2Text.length) {
+    document.getElementById("typeLine2").innerHTML +=
+      line2Text.charAt(j) === "\n" ? "<br>" : line2Text.charAt(j);
+    j++;
+    setTimeout(typeLine2, 35);
+  }
+}
 
-  setTimeout(() => {
-    go('page2');
-  }, 2500);
-});
+typeLine1();
+
+
+/* ===== SOFT SPARKLES AROUND INTRO ===== */
+for(let i=0;i<14;i++){
+  const s = document.createElement("div");
+  s.innerHTML = "✨";
+  s.style.position = "absolute";
+  s.style.left = Math.random()*100 + "vw";
+  s.style.top = Math.random()*100 + "vh";
+  s.style.opacity = Math.random();
+  s.style.fontSize = (12 + Math.random()*14) + "px";
+  s.style.animation = `floatUp ${6 + Math.random()*6}s linear infinite`;
+  document.body.appendChild(s);
+}
 
 </script>
-
-
 
 </body>
 </html>
